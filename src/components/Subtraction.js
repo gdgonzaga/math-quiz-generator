@@ -12,7 +12,7 @@ export default function Subtraction() {
   function generateSubtractionEquations(event) {
     event.preventDefault();
     const numItems = event.target.numItems.valueAsNumber;
-    const maxSum = event.target.maxMinuend.valueAsNumber;
+    const maxMinuend = event.target.maxMinuend.valueAsNumber;
     const borrowingOption = document.querySelector('input[name="borrowing"]:checked').value;
 
     let options = {};
@@ -27,7 +27,7 @@ export default function Subtraction() {
       options.includeBorrow = true;
     }
 
-    const result = formatPlain(getSubtractionEquations(numItems, 5, maxSum, options), "-", true);
+    const result = formatPlain(getSubtractionEquations(numItems, 5, maxMinuend, options), "-", true);
     setEquations(result);
   }
 
@@ -39,7 +39,7 @@ export default function Subtraction() {
           <Form.Control type="number" name="numItems" required />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Maximum sum</Form.Label>
+          <Form.Label>Maximum minuend</Form.Label>
           <Form.Control type="number" name="maxMinuend" required />
         </Form.Group>
         <Form.Group className="mb-3">
