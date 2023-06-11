@@ -37,3 +37,10 @@ export function addCommasToNumber(number) {
   }
   return result;
 }
+
+export function isRequired(argName) {
+  if (argName)
+    throw new Error(`Missing required argument: ${argName}`);
+  else
+    throw new Error(`Missing required argument`);
+}

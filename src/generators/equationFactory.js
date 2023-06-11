@@ -8,6 +8,8 @@ import {
   getSubtractionTermsWithBorrow
 } from './subtractionEquationFactory';
 
+import { getFactors } from './multiplicationEquationFactory';
+
 import { getRandomNumber } from './utils';
 
 /**
@@ -102,4 +104,14 @@ export function getSubtractionEquations(numItems, minMinuend, maxMinuend, option
   function addBorrow() {
     terms.push(getSubtractionTermsWithBorrow(maxMinuend))
   }
+}
+
+export function getMultiplicationEquations(numItems, factor1Options, factor2Options) {
+  let factors = [];
+
+  for (let i = 0; i < numItems; i++) {
+    factors.push(getFactors(factor1Options, factor2Options))
+  }
+
+  return factors;
 }

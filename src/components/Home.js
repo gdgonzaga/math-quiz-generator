@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Addition from './Addition';
 import Subtraction from './Subtraction';
+import Multiplication from './Multiplication';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Nav from 'react-bootstrap/Nav';
@@ -19,10 +20,14 @@ export default function Home() {
         <Nav.Item as="li">
           <Nav.Link onClick={ () => setOperation('subtraction') }>Subtraction</Nav.Link>
         </Nav.Item>
+        <Nav.Item as="li">
+          <Nav.Link onClick={ () => setOperation('multiplication') }>Multiplication</Nav.Link>
+        </Nav.Item>
       </Nav>
       <div>
         {operation === 'addition' && <Addition />}
         {operation === 'subtraction' && <Subtraction />}
+        {operation === 'multiplication' && <Multiplication />}
         {operation === '' && <p class="d-flex justify-content-center">Select an operation above</p>}
       </div>
     </Container>
