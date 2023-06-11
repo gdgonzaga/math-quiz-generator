@@ -56,7 +56,7 @@ export default function Addition() {
         
         <Form.Group className="mb-3">
           <Form.Label>First factor</Form.Label>
-          <Form.Check type="radio" name="factor1Type" value="range" label="Range"
+          <Form.Check type="radio" name="factor1Type" value="range" label="Range" required
             onClick={() => setFactor1Type('range')} />
           <Form.Check type="radio" name="factor1Type" value="specified" label="Specify values"
             onClick={() => setFactor1Type('specified')} />
@@ -85,7 +85,7 @@ export default function Addition() {
 
         <Form.Group className="mb-3">
           <Form.Label>Second factor</Form.Label>
-          <Form.Check type="radio" name="factor2Type" value="range" label="Range"
+          <Form.Check type="radio" name="factor2Type" value="range" label="Range" required
             onClick={() => setFactor2Type('range')} />
           <Form.Check type="radio" name="factor2Type" value="specified" label="Specify values"
             onClick={() => setFactor2Type('specified')} />
