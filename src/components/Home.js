@@ -15,16 +15,16 @@ export default function Home() {
       <h1 class="d-flex justify-content-center">Math quiz generator</h1>
       <Nav as="ul" className='justify-content-center my-3'>
         <Nav.Item as="li">
-          <Nav.Link onClick={ () => setOperation('addition') }>Addition</Nav.Link>
+          <Nav.Link onClick={ () => setOperation('addition') } disabled={ operation  === 'addition' }>Addition</Nav.Link>
         </Nav.Item>
         <Nav.Item as="li">
-          <Nav.Link onClick={ () => setOperation('subtraction') }>Subtraction</Nav.Link>
+          <Nav.Link onClick={ () => setOperation('subtraction') } disabled={ operation  === 'subtraction' }>Subtraction</Nav.Link>
         </Nav.Item>
         <Nav.Item as="li">
-          <Nav.Link onClick={ () => setOperation('multiplication') }>Multiplication</Nav.Link>
+          <Nav.Link onClick={ () => setOperation('multiplication') } disabled={ operation  === 'multiplication' }>Multiplication</Nav.Link>
         </Nav.Item>
       </Nav>
-      <div>
+      <div className="my-3">
         {operation === 'addition' && <Addition />}
         {operation === 'subtraction' && <Subtraction />}
         {operation === 'multiplication' && <Multiplication />}
