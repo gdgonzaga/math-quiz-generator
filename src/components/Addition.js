@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { getAdditionEquations } from '../generators/equationFactory';
-import { formatPlain } from '../generators/renderer';
 import Result from './Result';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -27,8 +26,8 @@ export default function Addition() {
       options.includeNoCarry = true;
     }
 
-    const result = formatPlain(getAdditionEquations(numItems, maxSum, options), "+", true);
-    setEquations(result);
+    setEquations(getAdditionEquations(numItems, maxSum, options));
+    console.log("equations", equations);
   }
 
   return (
@@ -50,7 +49,7 @@ export default function Addition() {
         </Form.Group>
         <Button variant="primary" type="submit" value="Generate equations">Generate quiz</Button>
       </Form>
-      <Result equations={equations} />
+      <Result equations={equations} operationSign="+"/>
     </div>
   );
 }

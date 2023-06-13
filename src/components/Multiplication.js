@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { getMultiplicationEquations } from '../generators/equationFactory';
-import { formatPlain } from '../generators/renderer';
 import Result from './Result';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -38,8 +37,7 @@ export default function Addition() {
       factor2Options = factor2SpecifiedValues;
     }
 
-    const result = formatPlain(getMultiplicationEquations(numItems, factor1Options, factor2Options), "x", true);
-    setEquations(result);
+    setEquations(getMultiplicationEquations(numItems, factor1Options, factor2Options));
 
     function cleanSpecifiedStringToArray(string) {
       return string.replace(/[^0-9,]+/g, '').split(',');
@@ -114,7 +112,7 @@ export default function Addition() {
 
         <Button variant="primary" type="submit" value="Generate equations">Generate quiz</Button>
       </Form>
-      <Result equations={equations} />
+      <Result equations={equations} operationSign="x" />
     </div>
   );
 }

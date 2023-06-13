@@ -1,7 +1,14 @@
+import { formatPlain } from '../generators/renderer';
 import Button from 'react-bootstrap/Button';
 
-export default function Result({equations}) {
+export default function Result({equations, operationSign}) {
+  if (Array.isArray(equations)) {
+    equations = formatPlain(equations, operationSign, true);
+  }
+
   function copyToClipboard() {
+    console.log("pre-format", equations);
+
     var textarea = document.getElementById("equations");
 
     textarea.select();

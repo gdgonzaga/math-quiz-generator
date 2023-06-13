@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { getSubtractionEquations } from '../generators/equationFactory';
-import { formatPlain } from '../generators/renderer';
 
 import Result from './Result';
 import Form from 'react-bootstrap/Form';
@@ -27,8 +26,7 @@ export default function Subtraction() {
       options.includeBorrow = true;
     }
 
-    const result = formatPlain(getSubtractionEquations(numItems, 5, maxMinuend, options), "-", true);
-    setEquations(result);
+    setEquations(getSubtractionEquations(numItems, 5, maxMinuend, options));
   }
 
   return (
@@ -50,7 +48,7 @@ export default function Subtraction() {
         </Form.Group>
         <Button variant="primary" type="submit" value="Generate equations">Generate quiz</Button>
       </Form>
-      <Result equations={equations} />
+      <Result equations={equations} operationSign="-"/>
     </div>
   );
 }
