@@ -10,6 +10,10 @@ import {
 
 import { getFactors } from './multiplicationEquationFactory';
 
+import { getDivisionTermsNoRemainder } from './divisionEquationFactory';
+
+import { getDivisionTermsWithRemainder } from './divisionEquationFactory';
+
 import { getRandomNumber } from './utils';
 
 /**
@@ -114,4 +118,46 @@ export function getMultiplicationEquations(numItems, factor1Options, factor2Opti
   }
 
   return factors;
+}
+
+export function getDivisionEquations(numItems, dividendOptions, divisorOptions, options = {}) {
+  let includeWithRemainder = false;
+  console.log('options:', options);
+  if (options.hasOwnProperty('includeWithRemainder'))
+    includeWithRemainder = options.includeWithRemainder;
+
+  let includeNoRemainder = false;
+  if (options.hasOwnProperty('includeNoRemainder'))
+    includeNoRemainder = options.includeNoRemainder;
+
+  const terms = [];
+
+  for (let i = 0; i < numItems; i++) {
+    if (includeNoRemainder && includeWithRemainder) {
+      addRandom();
+    } else if (includeWithRemainder) {
+      addRemainder()
+    } else {
+      addNoRemainder()
+    }
+  }
+
+  return terms;
+
+  function addRandom() {
+    if (getRandomNumber(0, 1) === 0)
+      addNoRemainder()
+    else
+      addRemainder()
+  }
+
+  function addNoRemainder() {
+    console.log("Addming no remainder");
+    terms.push(getDivisionTermsNoRemainder(dividendOptions, divisorOptions));
+  }
+
+  function addRemainder() {
+    console.log("Addming with remainder");
+    terms.push(getDivisionTermsWithRemainder(dividendOptions, divisorOptions));
+  }
 }
